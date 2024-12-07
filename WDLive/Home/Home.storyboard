@@ -12,7 +12,7 @@
         <!--主页-->
         <scene sceneID="OhT-of-Fu1">
             <objects>
-                <navigationController id="BVh-Pv-3VE" sceneMemberID="viewController">
+                <navigationController id="BVh-Pv-3VE" customClass="BaseNavigationController" customModule="WDLive" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="主页" image="nor/home" selectedImage="sel/home" id="YcZ-Cg-FY8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R6o-Cb-kHu">
@@ -45,7 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="nor/home" width="128" height="128"/>
+        <image name="nor/home" width="25" height="25"/>
         <image name="sel/home" width="26" height="26"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

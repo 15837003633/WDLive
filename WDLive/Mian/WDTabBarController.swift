@@ -25,7 +25,5 @@ class WDTabBarController: UITabBarController {
         }
         addChild(subVC)
     }
-    
-
 
 }

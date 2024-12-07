@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
 //        let titles = ["热门", "推荐", "附近", "最新", "关注"]
         let titles = ["热门", "推荐", "附近", "最新最新最新", "关注", "才艺才艺", "擦边边", "游戏", "宠物", "关注", "才艺", "擦边", "游戏", "宠物", "关注", "才艺才艺才艺才艺", "擦边", "游戏", "宠物"]
         let vcs = titles.map { _ in
-            let vc = UIViewController()
+            let vc = HomeChildViewController()
             vc.view.backgroundColor = .randomColor
             return vc
         }
