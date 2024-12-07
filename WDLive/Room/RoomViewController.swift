@@ -49,6 +49,9 @@ extension RoomViewController {
         let button = sender as! UIButton
         switch button.tag {
         case 0:
+            MusicRequest().request { songList in
+                print(songList ?? "error")
+            }
             break
         case 1:
             break

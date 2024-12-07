@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		055589B48425156FDDB68B46 /* Pods_WDLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E500FB371BAAEB534DF3C494 /* Pods_WDLive.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		3D46BBE9C6925F33940F4791 /* Pods-WDLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDLive.debug.xcconfig"; path = "Target Support Files/Pods-WDLive/Pods-WDLive.debug.xcconfig"; sourceTree = "<group>"; };
+		70749783E573EF175D0D0862 /* Pods-WDLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDLive.release.xcconfig"; path = "Target Support Files/Pods-WDLive/Pods-WDLive.release.xcconfig"; sourceTree = "<group>"; };
 		D22842142D028228002C587A /* WDLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E500FB371BAAEB534DF3C494 /* Pods_WDLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WDLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				055589B48425156FDDB68B46 /* Pods_WDLive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EA939BFDFC619E49AF3D181 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D46BBE9C6925F33940F4791 /* Pods-WDLive.debug.xcconfig */,
+				70749783E573EF175D0D0862 /* Pods-WDLive.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		646A53500DFDC2098D46B223 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E500FB371BAAEB534DF3C494 /* Pods_WDLive.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D228420B2D028228002C587A = {
 			isa = PBXGroup;
 			children = (
 				D22842162D028228002C587A /* WDLive */,
 				D22842152D028228002C587A /* Products */,
+				1EA939BFDFC619E49AF3D181 /* Pods */,
+				646A53500DFDC2098D46B223 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D22842272D028229002C587A /* Build configuration list for PBXNativeTarget "WDLive" */;
 			buildPhases = (
+				23D71604668721BC9AC27D84 /* [CP] Check Pods Manifest.lock */,
 				D22842102D028228002C587A /* Sources */,
 				D22842112D028228002C587A /* Frameworks */,
 				D22842122D028228002C587A /* Resources */,
+				39F6920DA0BE676E14507CEF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +106,6 @@
 				D22842162D028228002C587A /* WDLive */,
 			);
 			name = WDLive;
-			packageProductDependencies = (
-			);
 			productName = WDLive;
 			productReference = D22842142D028228002C587A /* WDLive.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +154,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23D71604668721BC9AC27D84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WDLive-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39F6920DA0BE676E14507CEF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WDLive/Pods-WDLive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WDLive/Pods-WDLive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WDLive/Pods-WDLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D22842102D028228002C587A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,11 +209,13 @@
 /* Begin XCBuildConfiguration section */
 		D22842282D028229002C587A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D46BBE9C6925F33940F4791 /* Pods-WDLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WDLive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -167,11 +238,13 @@
 		};
 		D22842292D028229002C587A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70749783E573EF175D0D0862 /* Pods-WDLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WDLive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
