@@ -9,6 +9,7 @@ import UIKit
 
 class HomeChildViewController: UIViewController {
 
+    private var cellCount = 30
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
@@ -43,12 +44,16 @@ class HomeChildViewController: UIViewController {
 
 extension HomeChildViewController: UICollectionViewDataSource ,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .randomColor
+        if indexPath.row == cellCount - 1 {
+            cellCount += 30
+            collectionView.reloadData()
+        }
         return cell
     }
     

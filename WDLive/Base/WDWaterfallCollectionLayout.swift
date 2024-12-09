@@ -17,26 +17,32 @@ open class WDWaterfallCollectionLayout: UICollectionViewFlowLayout {
     
     
     private var itemAttrs = [UICollectionViewLayoutAttributes]()
-    private var totalColHeights: [CGFloat]!
+    private lazy var totalColHeights: [CGFloat] = Array(repeating: self.sectionInset.top, count: self.col)
     
 }
 
 extension WDWaterfallCollectionLayout {
     open override func prepare() {
         super.prepare()
-        totalColHeights = Array(repeating: sectionInset.top, count: col)
-
+        
         let width: CGFloat = (collectionView!.bounds.width - sectionInset.left - sectionInset.right - minimumInteritemSpacing * (CGFloat(col) - 1)) / CGFloat(col)
 
         let itemCount = collectionView!.numberOfItems(inSection: 0)
-        for i in 0..<itemCount {
+        
+        /*
+         Q：优化上拉加载更多
+         方案1：从itemAttrs.count开始遍历，，减少不必要的计算。
+         方案2：每次reloadData时会调用prepare中清空itemAttrs和totalColHeights，全部重新计算
+         */
+
+        for i in itemAttrs.count..<itemCount {
             let attrs = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
             let minY = totalColHeights.min()!
             let minY_index = totalColHeights.firstIndex(of: minY)!
             
             //计算frame
             let x: CGFloat = sectionInset.left + (width + minimumInteritemSpacing) * CGFloat(minY_index)
-            let y: CGFloat = minY + (i < col ? 0 : minimumLineSpacing)
+            let y: CGFloat = minY
             guard let height: CGFloat = dataSource?.heightForItems(in: self) else {
                 fatalError("must implement datasource")
             }
@@ -44,13 +50,13 @@ extension WDWaterfallCollectionLayout {
             attrs.frame = CGRect(x: x, y: y, width: width, height: height)
             
             itemAttrs.append(attrs)
-            totalColHeights[minY_index] = attrs.frame.maxY
+            totalColHeights[minY_index] = attrs.frame.maxY + minimumLineSpacing
         }
         
     }
     
     open override var collectionViewContentSize: CGSize {
-        return .init(width: 0, height: totalColHeights.max()! + sectionInset.bottom)
+        return .init(width: 0, height: totalColHeights.max()! + sectionInset.bottom - minimumLineSpacing)
     }
     
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

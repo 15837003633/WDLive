@@ -84,11 +84,15 @@ extension WDPagerContentView: UICollectionViewDelegate, UIScrollViewDelegate{
     // MARK: - 处理滚动结束逻辑
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         didEndScroll()
+        scrollView.isScrollEnabled = true
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             didEndScroll()
+        }else{
+            //禁用拖拽滚动，防止滚动过快，解决小问题：上一次滚动还没结束，就开始快速拖拽下一次，导致beginDraggingOffsetX不是一个页面整数倍的值，导致ui出现bug
+            scrollView.isScrollEnabled = false
         }
     }
     
@@ -97,17 +101,18 @@ extension WDPagerContentView: UICollectionViewDelegate, UIScrollViewDelegate{
         let currentIndex = Int(offsetX/bounds.width)
 //        print("当前滚动索引\(currentIndex)")
         delegate?.pagerContentView(self, didTo: currentIndex)
-        forbidScroll = false
+        
     }
     
     // MARK: - 处理滚动中的渐变逻辑
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        forbidScroll = false
         beginDraggingOffsetX = scrollView.contentOffset.x
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard !forbidScroll else {
+        guard beginDraggingOffsetX == scrollView.contentOffset.x, !forbidScroll else {
             return
         }
         var targetIndex = Int(beginDraggingOffsetX/bounds.width)
