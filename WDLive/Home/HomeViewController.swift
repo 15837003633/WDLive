@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
         style.isTitleScollEnable = true
         style.isShowTitleIndicatorLine = true
         let view = WDPagerView(frame: view.bounds, titles: titles, childVCs: vcs, parentVC: self, style: style)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return view
     }()
 }

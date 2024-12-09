@@ -34,6 +34,7 @@ class WDPagerView: UIView {
     
     lazy var contenView: WDPagerContentView = {
         let view = WDPagerContentView(frame: .init(x: 0, y: style.titleHeight, width: bounds.width, height: bounds.height - style.titleHeight), childVCs: self.childVCs, parentVC: self.parentVC,style: self.style)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         return view
     }()
     
