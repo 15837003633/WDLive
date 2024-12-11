@@ -112,7 +112,7 @@ extension WDPagerContentView: UICollectionViewDelegate, UIScrollViewDelegate{
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard beginDraggingOffsetX == scrollView.contentOffset.x, !forbidScroll else {
+        guard !forbidScroll else {
             return
         }
         var targetIndex = Int(beginDraggingOffsetX/bounds.width)

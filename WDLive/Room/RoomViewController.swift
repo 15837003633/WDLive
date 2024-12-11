@@ -9,9 +9,14 @@ import UIKit
 
 class RoomViewController: UIViewController {
 
+    @IBOutlet weak var testDigitLabel: GiftDigitLabel!
+    @IBOutlet weak var giftHitsContainerView: GiftHitsContainerView!
+    let cell = GiftHitsCellView.loadNibView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .randomColor
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,17 +32,33 @@ class RoomViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setupUI(){
+//        cell.frame = CGRect(x: 0, y: 100, width: 300, height: 50)
+//        view.addSubview(cell)
     }
-    */
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        testDigitLabel.performAnimation {
+//            print("动画结束")
+//        }
 
+        
+
+        
+    }
+    @IBAction func sendGift1Action(_ sender: Any) {
+        let giftModel = GiftModel(username: "scott1", name: "大炮", pic: "pking", id: 1, sendCount: 1)
+        giftHitsContainerView.show(giftModel)
+    }
+    @IBAction func sendGift2Action(_ sender: Any) {
+        let giftModel = GiftModel(username: "scott2", name: "飞机", pic: "stream", id: 2, sendCount: 2)
+        giftHitsContainerView.show(giftModel)
+    }
+    @IBAction func sendGift3Action(_ sender: Any) {
+        let giftModel = GiftModel(username: "scott3", name: "火箭", pic: "video_roomsource_tag", id: 3, sendCount: 3)
+        giftHitsContainerView.show(giftModel)
+    }
 }
 
 extension RoomViewController {
