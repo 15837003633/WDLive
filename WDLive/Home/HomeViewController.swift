@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .randomColor
         setupUI()
     }
-    
+
     lazy var pagerView: WDPagerView = {
 //        let titles = ["热门", "推荐", "附近", "最新", "关注"]
         let titles = ["热门", "推荐", "附近", "最新最新最新", "关注", "才艺才艺", "擦边边", "游戏", "宠物", "关注", "才艺", "擦边", "游戏", "宠物", "关注", "才艺才艺才艺才艺", "擦边", "游戏", "宠物"]
@@ -32,36 +32,39 @@ class HomeViewController: UIViewController {
     }()
 }
 
-//UI
+// UI
 extension HomeViewController {
-    func setupUI(){
+    func setupUI() {
         setupNavBar()
         setupPagerView()
     }
-    
-    func setupNavBar(){
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "input_search")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(onLeftButtonClick))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "stream")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(onRightButtonClick))
+
+    func setupNavBar() {
+        let leftImage = UIImage(named: "input_search")?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftImage, style: .plain, target: self, action: #selector(onLeftButtonClick))
+
+        let rightImage = UIImage(named: "stream")?.withRenderingMode(.alwaysOriginal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: rightImage, style: .plain, target: self, action: #selector(onRightButtonClick))
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 150, height: 35))
         searchBar.placeholder = "请输入搜索内容"
         searchBar.tintColor = .white
         searchBar.barTintColor = .white
         navigationItem.titleView = searchBar
     }
-    
-    func setupPagerView(){
+
+    func setupPagerView() {
         view.addSubview(pagerView)
     }
-    
+
 }
 
-//事件
+// 事件
 extension HomeViewController {
-    @objc func onLeftButtonClick(){
+    @objc func onLeftButtonClick() {
         print(#function)
     }
-    
-    @objc func onRightButtonClick(){
+
+    @objc func onRightButtonClick() {
         print(#function)
     }
 }

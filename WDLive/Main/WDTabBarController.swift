@@ -17,7 +17,7 @@ class WDTabBarController: UITabBarController {
         addSubChild("Chat")
         addSubChild("Profile")
     }
-    
+
     func addSubChild(_ sbName: String) {
         let storyBoard = UIStoryboard(name: sbName, bundle: Bundle.main)
         guard let subVC = storyBoard.instantiateInitialViewController() else {

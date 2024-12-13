@@ -13,7 +13,7 @@ class GiftModel: NSObject {
     let pic: String
     let id: Int
     let sendCount: Int
-    
+
     init(username: String, name: String, pic: String, id: Int, sendCount: Int) {
         self.username = username
         self.name = name
@@ -21,10 +21,10 @@ class GiftModel: NSObject {
         self.id = id
         self.sendCount = sendCount
     }
-    
+
     override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? GiftModel else { return false }
         return self.id == object.id && self.username == object.username
     }
-    
+
 }

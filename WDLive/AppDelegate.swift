@@ -5,21 +5,20 @@
 //  Created by scott on 2024/12/6.
 //
 
+// swiftlint:disable line_length
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         let standAppearance = UINavigationBarAppearance()
         standAppearance.backgroundColor = .darkGray
         UINavigationBar.appearance().standardAppearance = standAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = standAppearance
         UINavigationBar.appearance().isTranslucent = false
-        
+
         return true
     }
 
@@ -37,6 +36,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-

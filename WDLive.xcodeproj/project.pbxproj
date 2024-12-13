@@ -93,11 +93,11 @@
 			buildConfigurationList = D22842272D028229002C587A /* Build configuration list for PBXNativeTarget "WDLive" */;
 			buildPhases = (
 				23D71604668721BC9AC27D84 /* [CP] Check Pods Manifest.lock */,
+				B1F4FBC92D0C792400E7DF82 /* Run SwiftLint */,
 				D22842102D028228002C587A /* Sources */,
 				D22842112D028228002C587A /* Frameworks */,
 				D22842122D028228002C587A /* Resources */,
 				39F6920DA0BE676E14507CEF /* [CP] Embed Pods Frameworks */,
-				B1F4FBC92D0C792400E7DF82 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -211,7 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint --fix\n${PODS_ROOT}/SwiftLint/swiftlint lint\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# ${PODS_ROOT}/SwiftLint/swiftlint --fix --path WDLive\n${PODS_ROOT}/SwiftLint/swiftlint lint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

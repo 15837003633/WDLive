@@ -1,4 +1,3 @@
-
 import UIKit
 
 /*
@@ -14,21 +13,20 @@ public protocol WDWaterfallCollectionLayoutDataSource: AnyObject {
 open class WDWaterfallCollectionLayout: UICollectionViewFlowLayout {
     open var col: Int = 3
     open weak var dataSource: WDWaterfallCollectionLayoutDataSource?
-    
-    
+
     private var itemAttrs = [UICollectionViewLayoutAttributes]()
     private lazy var totalColHeights: [CGFloat] = Array(repeating: self.sectionInset.top, count: self.col)
-    
+
 }
 
 extension WDWaterfallCollectionLayout {
     open override func prepare() {
         super.prepare()
-        
+        // swiftlint:disable line_length
         let width: CGFloat = (collectionView!.bounds.width - sectionInset.left - sectionInset.right - minimumInteritemSpacing * (CGFloat(col) - 1)) / CGFloat(col)
 
         let itemCount = collectionView!.numberOfItems(inSection: 0)
-        
+
         /*
          Q：优化上拉加载更多
          方案1：从itemAttrs.count开始遍历，，减少不必要的计算。
@@ -39,26 +37,26 @@ extension WDWaterfallCollectionLayout {
             let attrs = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
             let minY = totalColHeights.min()!
             let minY_index = totalColHeights.firstIndex(of: minY)!
-            
-            //计算frame
+
+            // 计算frame
             let x: CGFloat = sectionInset.left + (width + minimumInteritemSpacing) * CGFloat(minY_index)
             let y: CGFloat = minY
             guard let height: CGFloat = dataSource?.heightForItems(in: self) else {
                 fatalError("must implement datasource")
             }
-            
+
             attrs.frame = CGRect(x: x, y: y, width: width, height: height)
-            
+
             itemAttrs.append(attrs)
             totalColHeights[minY_index] = attrs.frame.maxY + minimumLineSpacing
         }
-        
+
     }
-    
+
     open override var collectionViewContentSize: CGSize {
         return .init(width: 0, height: totalColHeights.max()! + sectionInset.bottom - minimumLineSpacing)
     }
-    
+
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return itemAttrs
     }

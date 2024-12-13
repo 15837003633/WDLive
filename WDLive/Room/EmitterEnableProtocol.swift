@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol EmitterEnableProtocol{
+protocol EmitterEnableProtocol {
     func startEmitter()
     func stopEmitter()
 }
 
 extension EmitterEnableProtocol where Self: UIViewController {
-    func startEmitter(){
+    func startEmitter() {
         let emitter = CAEmitterLayer()
         emitter.emitterPosition = CGPoint(x: self.view.bounds.width - 40, y: self.view.bounds.height - 40)
         emitter.emitterShape = .point
         view.layer.addSublayer(emitter)
-        
+
         let emitterCell = CAEmitterCell()
         emitterCell.birthRate = 3
         emitterCell.lifetime = 3
@@ -30,11 +30,11 @@ extension EmitterEnableProtocol where Self: UIViewController {
         emitterCell.emissionLongitude = -CGFloat.pi / 2
         emitterCell.emissionRange = CGFloat.pi / 6
         emitterCell.contents = UIImage(named: "rank")?.cgImage
-        
+
         emitter.emitterCells = [emitterCell]
     }
-    
-    func stopEmitter(){
+
+    func stopEmitter() {
         view.layer.sublayers?.filter({$0 is CAEmitterLayer}).forEach({$0.removeFromSuperlayer()})
     }
 }

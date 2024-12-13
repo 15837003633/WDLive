@@ -7,24 +7,23 @@
 
 import Foundation
 
-
 struct MusicRequest: WDRequestable {
-    
+
     typealias Response = SongList
-    
+
     var path: String {
         "https://neteasecloudmusicapi.vercel.app/search"
     }
-    
+
     var method: WDRequestMethod {
         .GET
     }
-    
-    var headers: [String : Any]? {
+
+    var headers: [String: Any]? {
         nil
     }
-    
-    var parameters: [String : Any]? {
+
+    var parameters: [String: Any]? {
         [
             "keywords": "海阔天空"
         ]

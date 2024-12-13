@@ -18,34 +18,31 @@ class RoomViewController: UIViewController {
         view.backgroundColor = .randomColor
         setupUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
-    func setupUI(){
+
+    func setupUI() {
 //        cell.frame = CGRect(x: 0, y: 100, width: 300, height: 50)
 //        view.addSubview(cell)
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        testDigitLabel.performAnimation {
 //            print("动画结束")
 //        }
 
-        
-
-        
     }
     @IBAction func sendGift1Action(_ sender: Any) {
         let giftModel = GiftModel(username: "scott1", name: "大炮", pic: "pking", id: 1, sendCount: 1)
@@ -65,7 +62,7 @@ extension RoomViewController {
      @IBAction func onBackButtonClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     @IBAction func onBottomButtonClick(_ sender: Any) {
         let button = sender as! UIButton
         switch button.tag {
@@ -73,7 +70,6 @@ extension RoomViewController {
             MusicRequest().request { songList in
                 print(songList ?? "error")
             }
-            break
         case 1:
             break
         case 2:
@@ -82,16 +78,15 @@ extension RoomViewController {
             button.isSelected = !button.isSelected
             if button.isSelected {
                 startEmitter()
-            }else{
+            } else {
                 stopEmitter()
             }
-            break
         default:
             break
         }
    }
 }
 
-extension RoomViewController: EmitterEnableProtocol{
-    
+extension RoomViewController: EmitterEnableProtocol {
+
 }

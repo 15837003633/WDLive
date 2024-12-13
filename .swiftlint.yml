@@ -1,0 +1,29 @@
+# 禁用某些规则
+disabled_rules:
+#  - trailing_whitespace
+#  - force_cast
+   - identifier_name
+   - force_cast
+
+# 自定义规则的严重性
+opt_in_rules:
+  - empty_count
+  - explicit_init
+
+# 自定义规则的配置
+trailing_whitespace:
+  severity: warning  # 可以是 warning 或 error
+
+# 规则的具体配置
+line_length:
+  warning: 150
+  error: 250
+
+# 其他配置
+included:
+  - WDLive
+
+excluded:
+  - Pods
+  - Carthage
+

@@ -19,7 +19,7 @@ class HomeChildViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     lazy var collectionView: UICollectionView = {
         let layout = WDWaterfallCollectionLayout()
         layout.sectionInset = .init(top: 10, left: 10, bottom: 10, right: 10)
@@ -35,18 +35,18 @@ class HomeChildViewController: UIViewController {
         collectionView.contentInsetAdjustmentBehavior = .never
         return collectionView
     }()
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
 
 }
 
-extension HomeChildViewController: UICollectionViewDataSource ,UICollectionViewDelegate{
+extension HomeChildViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellCount
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .randomColor
@@ -56,7 +56,7 @@ extension HomeChildViewController: UICollectionViewDataSource ,UICollectionViewD
         }
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Room", bundle: Bundle.main)
         let roomVC = storyBoard.instantiateInitialViewController()
@@ -64,8 +64,7 @@ extension HomeChildViewController: UICollectionViewDataSource ,UICollectionViewD
     }
 }
 
-
-extension HomeChildViewController: WDWaterfallCollectionLayoutDataSource{
+extension HomeChildViewController: WDWaterfallCollectionLayoutDataSource {
     func heightForItems(in waterfallCollectionLayout: WDWaterfallCollectionLayout) -> CGFloat {
         return CGFloat(arc4random_uniform(150)+50)
     }

@@ -12,9 +12,9 @@ import SwiftyJSON
 protocol WDRequestable {
     var path: String { get }
     var method: WDRequestMethod { get }
-    var headers: [String : Any]? { get }
-    var parameters: [String : Any]? { get }
-    
+    var headers: [String: Any]? { get }
+    var parameters: [String: Any]? { get }
+
     associatedtype Response: Decodable
 }
 
@@ -22,12 +22,12 @@ extension WDRequestable {
     var method: WDRequestMethod {
         .GET
     }
-    
-    func request(_ completion: @escaping (Response?)->Void) {
+
+    func request(_ completion: @escaping (Response?) -> Void) {
         AF.request(path, method: HTTPMethod(rawValue: method.rawValue), parameters: parameters).responseJSON { response in
             let json = JSON(response.value!)
             guard let code = json["code"].int, code == 200 else {
-                print("reuqest error code:",response )
+                print("reuqest error code:", response )
                 return
             }
             guard let result = json["result"].dictionaryObject else { return }
@@ -36,7 +36,7 @@ extension WDRequestable {
             completion(model)
         }
     }
-    func test1<T: UIView>()->T {
+    func test1<T: UIView>() -> T {
         return T()
     }
 }
