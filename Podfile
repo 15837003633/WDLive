@@ -21,5 +21,5 @@ target 'WDLive' do
   pod 'SnapKit'
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
-
+  pod 'SwiftLint', '= 0.46.3'
 end
