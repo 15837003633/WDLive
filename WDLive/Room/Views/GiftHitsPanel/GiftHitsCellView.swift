@@ -36,7 +36,7 @@ class GiftHitsCellView: UIView, NibLoadEnable {
     public var state: State = .idle
     public weak var delegate: GiftHitsCellViewDelegate?
 
-    var giftModel: GiftModel? {
+    private(set) var giftModel: GiftModel? {
         didSet {
             guard let newValue = giftModel else { return }
             self.giftImageView.image = UIImage(named: newValue.pic)
