@@ -51,8 +51,14 @@ class GiftHitsCellView: UIView, NibLoadEnable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.cornerRadius = self.frame.height / 2
+        self.cornerRadius = self.frame.height / 2
         self.layer.masksToBounds = true
+    }
+
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
     }
 
 }
