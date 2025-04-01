@@ -67,8 +67,14 @@ extension RoomViewController {
         let button = sender as! UIButton
         switch button.tag {
         case 0:
-            MusicRequest().request { songList in
-                print(songList ?? "error")
+            let request = MusicRequest(keywords: "海阔天空")
+            WDRequestClient().send(request) { result in
+                switch result {
+                case .success(let songList):
+                    print(songList ?? "error")
+                case .failure(let error):
+                    print(error)
+                }
             }
         case 1:
             break

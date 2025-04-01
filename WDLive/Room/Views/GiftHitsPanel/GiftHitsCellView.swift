@@ -11,6 +11,7 @@ protocol GiftHitsCellViewDelegate: AnyObject {
     func dismissedCell(_ cell: GiftHitsCellView)
 }
 
+@IBDesignable
 class GiftHitsCellView: UIView, NibLoadEnable {
 
     enum State {
@@ -54,13 +55,6 @@ class GiftHitsCellView: UIView, NibLoadEnable {
         self.cornerRadius = self.frame.height / 2
         self.layer.masksToBounds = true
     }
-
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            self.layer.cornerRadius = cornerRadius
-        }
-    }
-
 }
 
 // cell动画过程

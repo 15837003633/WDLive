@@ -8,11 +8,13 @@
 import Foundation
 
 struct MusicRequest: WDRequestable {
-
+    
+    let keywords: String
+    
     typealias Response = SongList
 
     var path: String {
-        "https://neteasecloudmusicapi.vercel.app/search"
+        "/search"
     }
 
     var method: WDRequestMethod {
@@ -25,7 +27,7 @@ struct MusicRequest: WDRequestable {
 
     var parameters: [String: Any]? {
         [
-            "keywords": "海阔天空"
+            "keywords": keywords
         ]
     }
 }

@@ -13,7 +13,7 @@ protocol NibLoadEnable {
 
 extension NibLoadEnable where Self: UIView {
     static func loadNibView() -> Self {
-        let view = Bundle.main.loadNibNamed("\(self)", owner: nil, options: nil)?.first as! Self
+        let view = Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.first as! Self
         return view
     }
 }
